@@ -34,6 +34,33 @@
 - **Answer**:
 
 
+## Endpukte
+
+### GET /questions
+
+Liefert eine Liste aller questions zurück
+
+Shape:
+```javascript
+{
+  title:"was kann XY tun?",
+  description: "...",
+  category: 'html',
+  user: {},
+  answers: []
+}
+
+```
+
+### GET /questions/[:id]
+
+liefert uns eine einzelne Question zurück
+
+
+
+
+
+
 
 
 
