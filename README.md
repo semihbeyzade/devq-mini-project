@@ -43,11 +43,18 @@ Liefert eine Liste aller questions zurück
 Shape:
 ```javascript
 {
+  id: "djewhfjewhfkwrö",  
   title:"was kann XY tun?",
   description: "...",
-  category: 'html',
-  user: {},
-  answers: []
+  user: {
+      email: 'my@mail.de',
+      name: 'Hans Müller'
+  },
+  answers: [
+      {
+          description: '...'
+      }
+  ]
 }
 
 ```
@@ -56,6 +63,131 @@ Shape:
 
 liefert uns eine einzelne Question zurück
 
+Response:
+```javascript
+{
+  title:"was kann XY tun?",
+  description: "...",
+  user: {
+      email: 'my@mail.de',
+      name: 'Hans Müller'
+  },
+  answers: [
+      {
+          description: '...'
+      }
+  ]
+}
+```
+
+### POST /questions
+
+erstellt eine neue question
+
+Body:
+```javascript
+{
+    title: "Was kann XY tun?",
+    description: "...",
+    user: "userid"
+}
+```
+
+Response:
+```javascript
+{
+  id: "djewhfjewhfkwrö",  
+  title:"was kann XY tun?",
+  description: "...",
+  user: "sdefweklfk",
+  answers: []
+}
+```
+
+### POST /answer
+
+erstellt eine antwort für eine question
+
+Body:
+```javascript
+{
+    description: "...",
+    user: "sdefweklfk",
+    question: "djewhfjewhfkwrö"
+}
+```
+
+Response:
+```javascript
+{
+    id: "flkjwkgrjeö",
+    description: "...",
+    user: "rkerökgetölhg",
+    question: "ekjfkrjglrrö",
+}
+```
+
+### POST /user/login
+
+logged user ein
+
+Body:
+```javascript
+{
+    email: "my@mail.de",
+    password: "1234"
+}
+```
+
+Response:
+```javascript
+{
+    id: "flkjrgrölgreg",
+    email: "my@mail.de",
+    name: "Hans Müller",
+    answer: [],
+    questions: [
+        "jlklknlkwlwqö"
+    ]
+}
+```
+
+### POST /user/register
+
+erstellt einen neuen user und loggt ihn ein
+
+Body:
+```javascript
+{
+    email: "my@mail.de"},
+    password: "12345",
+    name: "Hans Müller"
+```
+
+Response:
+```javascript
+{
+    id: "efkjgförkgölrgm",
+    email: "my@mail.de",
+    name: "Hans Müller",
+    answer: [],
+    questions: []
+}
+```
+
+### POST /user/logout
+
+der usertoken cookie wird gelöscht. der token wird aus der datenbank entfernt
+
+Body:
+```javascript
+{}
+```
+
+Response:
+```javascript
+true
+```
 
 
 
