@@ -28,6 +28,7 @@
 
 ## Models
 
+![Model-Relations](images/Model-Relations.png)
 
 - **User**: Managed User-Daten
 - **Question**:
@@ -104,7 +105,7 @@ Response:
 }
 ```
 
-### POST /answer
+### POST /answers
 
 erstellt eine antwort für eine question
 
