@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
 
@@ -9,6 +11,15 @@ mongoose.connect(`mongodb://${DB_URL}:${DB_PORT}/${DB_NAME}`)
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser())
+
+const corsConfig = {
+    origin: 'http://localhost:3001',
+    Credential:true,
+}
+
+app.use(cors(corsConfig))
+app.options('*', cors(corsConfig))
 
 app.use('/user', require('./src/routes/user'))
 app.use('/answers', require('./src/routes/answers'))
