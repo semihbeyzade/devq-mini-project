@@ -57,7 +57,7 @@ export default function Login () {
                     </div>
     
                     <button type='submit'>
-                        Abschicken
+                     {user.isFetching ? 'fetching...' : 'Abschicken'}
                     </button>
                   </form>
               </div>
@@ -87,9 +87,9 @@ export default function Login () {
                 </div>
 
                 <button type='submit'>
-                    Abschicken
+                   {user.isFetching ? 'fetching...' : 'Abschicken'}
                 </button>
-                
+
                 {user.error && (
                   <div className='error'>{user.error}</div>
                 )}
