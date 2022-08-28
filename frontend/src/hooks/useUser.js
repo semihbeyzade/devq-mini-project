@@ -4,14 +4,31 @@ const Context = React.createContext({
    data: null,
    error: '',
    isFetching: false,
-   login: () => null,
-   register: () => null,
+   login: async () => 0,
+   register: async () => 0,
 })
 
 export function UserProvider (props) {
     const [user, setUser] = React.useState(null)
     const [error, setError] = React.useState('')
     const [isFetching, setIsFetching] = React.useState(false)
+    const [ready, setReady] = React.useState(false)
+
+    React.useEffect(() => {
+        fetch('http://localhost:3002/user', {
+          method: 'GET',
+          credentials: 'include'
+        })
+        .then(async res => {
+          if(res.status === 200) {
+            const result = await res.json()
+            setUser(result)
+          }
+        })
+        .finally(() => {
+          setReady(true)
+        })
+      }, [])
 
     const data = {
       data: user,
@@ -81,7 +98,7 @@ export function UserProvider (props) {
 
     return (
         <Context.Provider value={data}>
-           {props.children}
+           {ready && props.children}
         </Context.Provider>
     )
 }

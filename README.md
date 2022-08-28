@@ -191,17 +191,18 @@ true
 ```
 
 
+### GET /user
 
+gibt den aktuellen User zurück
 
-
-
-
-
-
-.
-
-
-
+Response:
+```javascript
+{
+  id: "hbgkhbkbghh",
+  email: "my@mail.de",
+  name: "Hans Müller",
+}
+```
 
 
 
