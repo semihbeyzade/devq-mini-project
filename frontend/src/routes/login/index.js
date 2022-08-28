@@ -89,6 +89,10 @@ export default function Login () {
                 <button type='submit'>
                     Abschicken
                 </button>
+                
+                {user.error && (
+                  <div className='error'>{user.error}</div>
+                )}
               </form>
           </div>
         </Layout>
