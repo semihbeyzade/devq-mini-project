@@ -8,9 +8,26 @@ export default function Login () {
     const [name, setName] =  React.useState('')
     const [showRegister, setShowRegister] = React.useState(false)
 
-    const handleLoginClick = (e) => {
+    const handleLoginClick = async (e) => {
         e.preventDefault()
-        alert('login-click')
+
+        const res = await fetch('http://localhost:3002/user/login', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        })
+
+        const result = await res.json()
+
+        console.log('status', res.status);
+        console.log('result', result);
+       
     }
 
     const handleRegisterClick = async (e) => {
