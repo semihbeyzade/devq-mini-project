@@ -5,9 +5,11 @@ import LoginRoute from './routes/login'
 import AccountRoute from './routes/account'
 import CreateQuestionRoute from './routes/create-question'
 import QuestionRoute from './routes/questions_id'
+import { UserProvider } from './hooks/useUser'
 
 function App() {
   return (
+    <UserProvider>
    <BrowserRouter>
     <Routes>
       <Route path="/" element={< OverviewRoute />} />
@@ -17,6 +19,7 @@ function App() {
       <Route path="/create-question" element={< CreateQuestionRoute />} />
     </Routes>
    </BrowserRouter>
+   </UserProvider>
   );
 }
 
