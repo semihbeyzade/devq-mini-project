@@ -5,7 +5,7 @@ import useUser from '../hooks/useUser'
 
 export default function Layout (props) {
     const user = useUser()
-
+  
     const accountLink = user.data ? '/account' : '/login'
     return (
         <div className="Layout">
