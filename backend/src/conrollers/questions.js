@@ -3,7 +3,8 @@ const Question = require('../models/Question')
 /** @type {import("express").RequestHandler} */
 exports.getQuestionList = async (req, res, next) => {
     /* throw new Error('not implemented') */
-    const questions = await Question.find().populate('user')
+    const questions = await Question.find().populate('user', 'name')
+
     res.status(200).send(questions)
 }
 
@@ -11,7 +12,7 @@ exports.getQuestionList = async (req, res, next) => {
 exports.getQuestionsById = async (req, res, next) => {
     /* throw new Error('not implemented') */
     const id = req.params.id
-    const question = await Question.findById(id).populate('user')
+    const question = await Question.findById(id).populate('user', 'name').populate('answers')
 
     if(!question) {
         const error = new Error('diese Question-ID gibt es nicht')
