@@ -11,6 +11,7 @@ app.route('/')
 .get(controller.getQuestionList)
 .post(auth, validations.createQuestion, controller.createQuestion)
 
+// -> /6314611e32bfaa1ece32d0f3
 app.get('/:id', controller.getQuestionsById)
 
 module.exports = app
