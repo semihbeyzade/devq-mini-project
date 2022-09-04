@@ -1,6 +1,7 @@
 const express = require('express')
 const controller = require('../conrollers/user')
 const validations = require('../lib/validators/user')
+require('express-async-errors')
 
 const app = express.Router()
 

@@ -1,3 +1,44 @@
-h1 {
-    font-size: 40px;
+.CreateQuestion {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    > h2 {
+        margin: 0;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    > input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+
+    > textarea{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+
+    > button {
+        margin-top: 50px;
+        padding: 10px 20px;
+        display: block;
+        width: 100%;
+        border: none;
+        background: black;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    > .error {
+        margin-top: 10px;
+        color: red;
+    }
 }

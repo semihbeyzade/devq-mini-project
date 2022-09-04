@@ -12,7 +12,7 @@ exports.logout = async (req, res) => {
    user.token = ''
    await user.save()
  }
- res.cookie('user-token', '', { maxAge: 900000, sameSite: 'strict', httpOnly: true })
+ res.cookie('user-token', '', { maxAge: 1, sameSite: 'strict', httpOnly: true })
 
  res.status(200).send()
 

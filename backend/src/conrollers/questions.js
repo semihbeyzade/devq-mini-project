@@ -1,4 +1,4 @@
-
+const Question = require('../models/Question')
 
 /** @type {import("express").RequestHandler} */
 exports.getQuestionList = (req, res, next) => {
@@ -11,7 +11,12 @@ exports.getQuestionsById = (req, res, next) => {
 }
   
 /** @type {import("express").RequestHandler} */
-exports.createQuestion = (req, res, next) => {
-    throw new Error('not implemented')
+exports.createQuestion = async (req, res) => {
+   /*  throw new Error('not implemented') */
+   const question = new Question(req.body)
+   question.user = req.user._id
+   await question.save()
+   res.status(200).send(question)
+
 }
   
