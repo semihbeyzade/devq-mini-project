@@ -1,8 +1,10 @@
 const Question = require('../models/Question')
 
 /** @type {import("express").RequestHandler} */
-exports.getQuestionList = (req, res, next) => {
-    throw new Error('not implemented')
+exports.getQuestionList = async (req, res, next) => {
+    /* throw new Error('not implemented') */
+    const questions = await Question.find().populate('user')
+    res.status(200).send(questions)
 }
 
 /** @type {import("express").RequestHandler} */
