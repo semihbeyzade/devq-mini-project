@@ -1,5 +1,8 @@
 # devq-mini-project
 
+## Tools
+- React.js, React-router(v6), Hooks, Css/Scss, Node.js, MongoDB, Express.js
+
 ## Features
 
 
