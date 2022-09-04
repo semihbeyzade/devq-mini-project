@@ -22,11 +22,40 @@ export default function Question () {
       })
     }, [params.id])
 
-    const handleAnswerSubmit = e => {
+    const handleAnswerSubmit = async e => {
       e.preventDefault()
-      alert('answer')
-    }
+      
+      const res = await fetch('http://localhost:3003/answers', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          description: answer,
+          question: question._id
+        })
+      })
+      
 
+      if(res.status === 200) {
+        setAnswer('')
+  
+        // refetch question
+        fetch('http://localhost:3003/questions/' + params.id, {
+          method: 'GET',
+          credentials: 'include'
+        })
+        .then(async res => {
+          const result = await res.json()
+  
+          if(res.status === 200) {
+            setQuestion(result)
+          }
+        })
+      }
+  
+    }
    
     if(!question) {
       return (
@@ -44,6 +73,12 @@ export default function Question () {
              <div className='name'>{question.user.name}</div>
             </div>
             <p className='description'>{question.description}</p>
+
+            <div className='answers'>
+              {question.answers.map(answer => (
+                <p key={answer._id}>{answer.description}</p>
+              ))}
+            </div>
 
             <hr />
 
