@@ -6,6 +6,7 @@ import Layout from '../../Layout'
 export default function Question () {
     const params = useParams()
     const [question, setQuestion] = React.useState(null)
+    const [answer, setAnswer] = React.useState('')
 
     React.useEffect(() => {
       fetch('http://localhost:3003/questions/' + params.id, {
@@ -20,6 +21,11 @@ export default function Question () {
         }
       })
     }, [params.id])
+
+    const handleAnswerSubmit = e => {
+      e.preventDefault()
+      alert('answer')
+    }
 
    
     if(!question) {
@@ -38,6 +44,14 @@ export default function Question () {
              <div className='name'>{question.user.name}</div>
             </div>
             <p className='description'>{question.description}</p>
+
+            <hr />
+
+            <form onSubmit={handleAnswerSubmit}>
+            <h2>Meine Antwort</h2>
+            <textarea rows={10} onChange={e => setAnswer(e.target.value)} />
+            <button>Abschicken</button>
+            </form>
           </div>
         </Layout>
     )
